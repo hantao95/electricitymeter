@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- 引入数据库连接配置 -->
+	<properties resource="application.properties" />
+
+	<context id="Mysql" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+		<!-- 生成的Java文件的编码 -->
+		<property name="javaFileEncoding" value="UTF-8" />
+		<!-- 配置 tk.mybatis 插件 -->
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+			<property name="mappers"
+				value="tk.mybatis.mapper.common.Mapper" />
+		</plugin>
+
+		<!-- 配置数据库连接 -->
+		<jdbcConnection driverClass="${spring.datasource.driver-class-name}"
+			connectionURL="${spring.datasource.url}" userId="${spring.datasource.username}"
+			password="${spring.datasource.password}">
+		</jdbcConnection>
+
+		<!-- 配置实体类存放路径 -->
+		<javaModelGenerator
+			targetPackage="com.ht.electricitymeter.dao.bean" targetProject="src/main/java" />
+
+		<!-- 配置 XML 存放路径 -->
+		<sqlMapGenerator
+			targetPackage="com.ht.electricitymeter.dao.mapper" targetProject="src/main/java" />
+
+		<!-- 配置 DAO 存放路径 -->
+		<javaClientGenerator
+			targetPackage="com.ht.electricitymeter.dao.mapper" targetProject="src/main/java"
+			type="XMLMAPPER" />
+
+		<!-- 配置需要指定生成的数据库和表，% 代表所有表 -->
+		<table tableName="electricity_info">
+			<!-- mysql 配置 -->
+			<generatedKey column="id" sqlStatement="Mysql"
+				identity="true" />
+		</table>
+	</context>
+</generatorConfiguration>
