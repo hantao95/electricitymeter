@@ -1,6 +1,5 @@
-package com.ht.electricitymeter.config;
+package com.ht.demo.electricitymeter.config;
 
-import com.ht.electricitymeter.dao.bean.CommonResult;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -10,6 +9,8 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
+
+import com.ht.demo.electricitymeter.dao.bean.CommonResult;
 
 
 /**

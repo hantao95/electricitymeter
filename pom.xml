@@ -14,6 +14,7 @@
     <name>electricitymeter</name>
     <description>智能电表远程读数系统</description>
     <properties>
+    <maven-jar-plugin.version>3.0.0</maven-jar-plugin.version>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
@@ -42,7 +43,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+		<dependency>
+			<groupId>org.rxtx</groupId>
+			<artifactId>rxtx</artifactId>
+			<version>2.1.7</version>
+		</dependency>
         <!--分页 pagehelper -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>

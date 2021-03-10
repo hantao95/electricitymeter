@@ -1,4 +1,4 @@
-package com.ht.electricitymeter.dao.bean;
+package com.ht.demo.electricitymeter.dao.bean;
 
 import java.math.BigDecimal;
 import java.util.Date;

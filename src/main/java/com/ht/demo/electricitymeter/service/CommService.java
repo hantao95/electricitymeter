@@ -1,14 +1,15 @@
-package com.ht.electricitymeter.service;
+package com.ht.demo.electricitymeter.service;
 
-import com.ht.electricitymeter.dao.bean.CommonResult;
-import com.ht.electricitymeter.dao.bean.ElectricityInfo;
-import com.ht.electricitymeter.dao.bean.PD194EData;
-import com.ht.electricitymeter.util.SerialPortManager;
-import com.ht.electricitymeter.util.StringUtil;
 import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
 
 import java.util.List;
+
+import com.ht.demo.electricitymeter.dao.bean.CommonResult;
+import com.ht.demo.electricitymeter.dao.bean.ElectricityInfo;
+import com.ht.demo.electricitymeter.dao.bean.PD194EData;
+import com.ht.demo.electricitymeter.util.SerialPortManager;
+import com.ht.demo.electricitymeter.util.StringUtil;
 
 public class CommService {
 

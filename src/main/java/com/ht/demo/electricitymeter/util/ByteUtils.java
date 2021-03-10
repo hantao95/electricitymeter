@@ -1,4 +1,4 @@
-package com.ht.electricitymeter.util;
+package com.ht.demo.electricitymeter.util;
 
 import java.nio.ByteBuffer;
 import java.util.Locale;

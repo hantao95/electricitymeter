@@ -1,9 +1,10 @@
-package com.ht.electricitymeter.dao.bean;
+package com.ht.demo.electricitymeter.dao.bean;
 
-import com.ht.electricitymeter.util.ByteUtils;
 import lombok.Data;
 
 import java.math.BigDecimal;
+
+import com.ht.demo.electricitymeter.util.ByteUtils;
 
 @Data
 public class PD194EData {

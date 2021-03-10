@@ -1,4 +1,4 @@
-package com.ht.electricitymeter;
+package com.ht.demo.electricitymeter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

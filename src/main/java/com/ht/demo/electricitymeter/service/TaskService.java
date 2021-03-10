@@ -1,4 +1,4 @@
-package com.ht.electricitymeter.service;
+package com.ht.demo.electricitymeter.service;
 
 //TODO
 
