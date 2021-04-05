@@ -8,6 +8,10 @@ import com.ht.demo.electricitymeter.util.ByteUtils;
 
 @Data
 public class PD194EData {
+    private Integer address = 01;//地址
+
+    private String addressName = "测试线路";//地址
+
     private Integer  relay01 = 0;//继电器01
     private Integer  relay02 = 0;//继电器02
     private Integer  relay03 = 0;//继电器03
