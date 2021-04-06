@@ -1,10 +1,10 @@
 package com.ht.demo.electricitymeter.dao.bean;
 
-import lombok.Data;
-
 import java.math.BigDecimal;
 
 import com.ht.demo.electricitymeter.util.ByteUtils;
+
+import lombok.Data;
 
 @Data
 public class PD194EData {
@@ -21,19 +21,19 @@ public class PD194EData {
     private Integer  switch03 = 0;//开关量03
     private Integer  switch04 = 0;//开关量04
 
-    private BigDecimal  Uab = BigDecimal.ZERO;//寄存器000C-000D
-    private BigDecimal  Ubc = BigDecimal.ZERO;//寄存器000E-000F
-    private BigDecimal  Uca = BigDecimal.ZERO;//寄存器0010-0011
-    private BigDecimal  Ia = BigDecimal.ZERO;//寄存器0012-0013
-    private BigDecimal  Ib = BigDecimal.ZERO;//寄存器0014-0015
-    private BigDecimal  Ic = BigDecimal.ZERO;//寄存器0016-0017
-    private BigDecimal  Pa = BigDecimal.ZERO;//寄存器0018-0019
-    private BigDecimal  Pb = BigDecimal.ZERO;//寄存器001A-001B
-    private BigDecimal  Pc = BigDecimal.ZERO;//寄存器001C-001D
-    private BigDecimal  P0 = BigDecimal.ZERO;//寄存器001E-001F
-    private BigDecimal  Q0 = BigDecimal.ZERO;//寄存器0026-0027
-    private BigDecimal  Rate = BigDecimal.ZERO;//寄存器002A-002B
-    private BigDecimal  W0 = BigDecimal.ZERO;//寄存器002E-002F
+    private BigDecimal  uab = BigDecimal.ZERO;//寄存器000C-000D
+    private BigDecimal  ubc = BigDecimal.ZERO;//寄存器000E-000F
+    private BigDecimal  uca = BigDecimal.ZERO;//寄存器0010-0011
+    private BigDecimal  ia = BigDecimal.ZERO;//寄存器0012-0013
+    private BigDecimal  ib = BigDecimal.ZERO;//寄存器0014-0015
+    private BigDecimal  ic = BigDecimal.ZERO;//寄存器0016-0017
+    private BigDecimal  pa = BigDecimal.ZERO;//寄存器0018-0019
+    private BigDecimal  pb = BigDecimal.ZERO;//寄存器001A-001B
+    private BigDecimal  pc = BigDecimal.ZERO;//寄存器001C-001D
+    private BigDecimal  p0 = BigDecimal.ZERO;//寄存器001E-001F
+    private BigDecimal  q0 = BigDecimal.ZERO;//寄存器0026-0027
+    private BigDecimal  rate = BigDecimal.ZERO;//寄存器002A-002B
+    private BigDecimal  w0 = BigDecimal.ZERO;//寄存器002E-002F
 
 
     public void parserelayData(String data){
@@ -69,19 +69,19 @@ public class PD194EData {
         for(int i=0;i<data.length()/4;i++){
             //通过i，判断这是哪一个数据
             switch(i){
-                case 6:Uab=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 7:Ubc=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 8:Uca=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 9:Ia=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 10:Ib=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 11:Ic=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 12:Pa=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 13:Pb=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 14:Pc=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 15:P0=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 19:Q0=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 21:Rate=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 23:W0=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 6:uab=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 7:ubc=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 8:uca=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 9:ia=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 10:ib=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 11:ic=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 12:pa=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 13:pb=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 14:pc=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 15:p0=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 19:q0=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 21:rate=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 23:w0=new BigDecimal(ByteUtils.getBlockData(i,data));
             }
         }
     }

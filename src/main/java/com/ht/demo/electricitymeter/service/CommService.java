@@ -1,24 +1,20 @@
 package com.ht.demo.electricitymeter.service;
 
-import gnu.io.PortInUseException;
-import gnu.io.SerialPort;
-
 import java.util.List;
 
 import com.ht.demo.electricitymeter.dao.bean.CommonResult;
-import com.ht.demo.electricitymeter.dao.bean.ElectricityInfo;
 import com.ht.demo.electricitymeter.dao.bean.PD194EData;
 import com.ht.demo.electricitymeter.util.SerialPortManager;
 import com.ht.demo.electricitymeter.util.StringUtil;
+
+import gnu.io.PortInUseException;
+import gnu.io.SerialPort;
 
 public class CommService {
 
     private static SerialPort port = null;
 
-    /**
-     * 静态变量当缓存，串口监听修改此变量，前端请求仅返回会此变量的值，不会发送请求
-     */
-    private static ElectricityInfo eInfo1 = new ElectricityInfo();
+   
 
     /**
      * 查询有效的com口

@@ -8,7 +8,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
  * token令牌校验拦截器
- * 丁晓忠
  */
 @Component
 public class TokenInterceptor implements HandlerInterceptor {
