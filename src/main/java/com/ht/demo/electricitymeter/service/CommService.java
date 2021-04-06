@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ht.demo.electricitymeter.dao.bean.CommonResult;
 import com.ht.demo.electricitymeter.dao.bean.PD194EData;
+import com.ht.demo.electricitymeter.util.ByteUtils;
 import com.ht.demo.electricitymeter.util.SerialPortManager;
 import com.ht.demo.electricitymeter.util.StringUtil;
 
@@ -37,6 +38,34 @@ public class CommService {
             message = "已存在打开的端口";
             errorCode = "200";
         }
+
+        // 添加串口监听
+        SerialPortManager.addListener(port, new SerialPortManager.DataAvailableListener() {
+
+            @Override
+            public void dataAvailable() {
+                byte[] data = null;
+                try {
+                    if (port == null) {
+                        //"串口对象为空，监听失败！"
+                        return ;
+                    } else {
+                        // 读取串口数据
+                        data = SerialPortManager.readFromPort(port);
+
+
+                        // 以十六进制的形式接收数据
+
+                          String d = ByteUtils.byteArrayToHexString(data) ;
+
+                        System.out.println(ByteUtils.byteArrayToHexString(data) );
+                    }
+                } catch (Exception e) {
+                    // 发生读取错误时显示错误信息后退出系统
+                    System.exit(0);
+                }
+            }
+        });
         result.setErrorCode(errorCode);
         result.setMessage(message);
        return result;
