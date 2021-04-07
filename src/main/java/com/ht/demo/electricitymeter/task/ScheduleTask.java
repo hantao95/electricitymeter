@@ -27,20 +27,20 @@ public class ScheduleTask {
 
     /**
      * 
-    	* @描述: 查询信息
+    	* @描述: 发送报文
     	* @param 参数
     	* @作者 韩涛
     	* @更新时间 2021年4月6日
      */
     @Scheduled(fixedDelay = 1000 * 1) //1秒一次
-    public void queryInfo() {
-    	taskService.queryInfo();
+    public void sendMessage() {
+    	taskService.sendMessage();
     }
 
     /**
      * 每小时记录
      */
-    @Scheduled(cron = "0 0 0/1 * * ? *")
+    @Scheduled(cron = "0 0 0/1 * * ? ")
     public void record() {
     	logger.info("开始记录");
     	taskService.record();

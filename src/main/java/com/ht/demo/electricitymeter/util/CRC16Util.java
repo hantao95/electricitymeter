@@ -74,6 +74,10 @@ public class CRC16Util {
         //交换高低位
         return result.substring(2, 4) + result.substring(0, 2);
     }
+    
+    public static String addCRC(String data) {
+    	return data+getCRC(data);
+    }
 
 
     public static void main(String[] args) {
@@ -84,6 +88,7 @@ public class CRC16Util {
         System.out.println(getCRC("01 03 00 00 00 08"));
         System.out.println(getCRC("01 03 10 00 8F 02 4E 00 91 02 44 00 92 02 5A 00 8B 02 47"));
         System.out.println(getCRC("970100000003"));
+        System.out.println(addCRC("970100000003"));
         System.out.println(getCRC("970200000004"));
         System.out.println(getCRC("970300000065"));
 

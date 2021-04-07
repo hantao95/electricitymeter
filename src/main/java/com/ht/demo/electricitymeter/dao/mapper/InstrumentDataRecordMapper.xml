@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ht.demo.electricitymeter.dao.mapper.InstrumentDataRecordMapper">
+  <resultMap id="BaseResultMap" type="com.ht.demo.electricitymeter.dao.bean.InstrumentDataRecord">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="relay01" jdbcType="INTEGER" property="relay01" />
+    <result column="relay02" jdbcType="INTEGER" property="relay02" />
+    <result column="relay03" jdbcType="INTEGER" property="relay03" />
+    <result column="switch01" jdbcType="INTEGER" property="switch01" />
+    <result column="switch02" jdbcType="INTEGER" property="switch02" />
+    <result column="switch03" jdbcType="INTEGER" property="switch03" />
+    <result column="switch04" jdbcType="INTEGER" property="switch04" />
+    <result column="uab" jdbcType="DECIMAL" property="uab" />
+    <result column="ubc" jdbcType="DECIMAL" property="ubc" />
+    <result column="uca" jdbcType="DECIMAL" property="uca" />
+    <result column="ia" jdbcType="DECIMAL" property="ia" />
+    <result column="ib" jdbcType="DECIMAL" property="ib" />
+    <result column="ic" jdbcType="DECIMAL" property="ic" />
+    <result column="pa" jdbcType="DECIMAL" property="pa" />
+    <result column="pb" jdbcType="DECIMAL" property="pb" />
+    <result column="pc" jdbcType="DECIMAL" property="pc" />
+    <result column="p0" jdbcType="DECIMAL" property="p0" />
+    <result column="q0" jdbcType="DECIMAL" property="q0" />
+    <result column="rate" jdbcType="DECIMAL" property="rate" />
+    <result column="w0" jdbcType="DECIMAL" property="w0" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>

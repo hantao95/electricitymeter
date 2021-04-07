@@ -7,10 +7,10 @@ import com.ht.demo.electricitymeter.util.ByteUtils;
 import lombok.Data;
 
 @Data
-public class PD194EData {
-    private Integer address = 01;//地址
-
-    private String addressName = "测试线路";//地址
+public class PD194EData implements Instrument{
+    private Integer address ;//地址
+    private String addressName ;//地址
+    private Integer sort;//排序
 
     private Integer  relay01 = 0;//继电器01
     private Integer  relay02 = 0;//继电器02
@@ -69,19 +69,20 @@ public class PD194EData {
         for(int i=0;i<data.length()/4;i++){
             //通过i，判断这是哪一个数据
             switch(i){
-                case 6:uab=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 7:ubc=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 8:uca=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 9:ia=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 10:ib=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 11:ic=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 12:pa=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 13:pb=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 14:pc=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 15:p0=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 19:q0=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 21:rate=new BigDecimal(ByteUtils.getBlockData(i,data));
-                case 23:w0=new BigDecimal(ByteUtils.getBlockData(i,data));
+                case 6:uab=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 7:ubc=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 8:uca=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 9:ia=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 10:ib=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 11:ic=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 12:pa=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 13:pb=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 14:pc=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 15:p0=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 19:q0=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 21:rate=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                case 23:w0=new BigDecimal(ByteUtils.getBlockData(i,data));break;
+                default:break;
             }
         }
     }

@@ -21,7 +21,7 @@ import com.ht.demo.electricitymeter.dao.bean.CommonResult;
 @Configuration
 public class ReturnConfig {
 
-    @RestControllerAdvice
+    @RestControllerAdvice(basePackages = "com.ht.demo.electricitymeter.controller")
     static class CommonResultResponseAdvice implements ResponseBodyAdvice<Object>{
         public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
             return true;

@@ -27,19 +27,19 @@
 
 		<!-- 配置实体类存放路径 -->
 		<javaModelGenerator
-			targetPackage="com.ht.electricitymeter.dao.bean" targetProject="src/main/java" />
+			targetPackage="com.ht.demo.electricitymeter.dao.bean" targetProject="src/main/java" />
 
 		<!-- 配置 XML 存放路径 -->
 		<sqlMapGenerator
-			targetPackage="com.ht.electricitymeter.dao.mapper" targetProject="src/main/java" />
+			targetPackage="com.ht.demo.electricitymeter.dao.mapper" targetProject="src/main/java" />
 
 		<!-- 配置 DAO 存放路径 -->
 		<javaClientGenerator
-			targetPackage="com.ht.electricitymeter.dao.mapper" targetProject="src/main/java"
+			targetPackage="com.ht.demo.electricitymeter.dao.mapper" targetProject="src/main/java"
 			type="XMLMAPPER" />
 
 		<!-- 配置需要指定生成的数据库和表，% 代表所有表 -->
-		<table tableName="electricity_info">
+		<table tableName="instrument%">
 			<!-- mysql 配置 -->
 			<generatedKey column="id" sqlStatement="Mysql"
 				identity="true" />
