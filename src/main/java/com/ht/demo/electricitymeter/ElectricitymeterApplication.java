@@ -2,10 +2,11 @@ package com.ht.demo.electricitymeter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tk.mybatis.spring.annotation.MapperScan;
 
-@MapperScan("com.ht.electricitymeter.dao")
+@MapperScan("com.ht.demo.electricitymeter.dao")
 @EnableSwagger2
 @SpringBootApplication
 public class ElectricitymeterApplication {
