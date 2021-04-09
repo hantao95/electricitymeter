@@ -14,10 +14,10 @@
 	<title>Settings</title>
 
 	<link href="css/app.css" rel="stylesheet">
-	
-	<link href="../static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
-	<script src="../static/js/plugins/bootstrap-table/bootstrap-table.min.js" ></script>
-	<script src="../static/js/plugins/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="js/app.js"></script>
+<link href="../static/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet">
+<script src="../static/bootstrap-table/dist/bootstrap-table.min.js" ></script>
+<script src="../static/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
 
 	
 	
@@ -31,25 +31,25 @@
 	          <span class="align-middle">电路监控</span>
 	        </a>
 
-		<ul class="sidebar-nav">			
-			<li class="sidebar-item ">
-				<a class="sidebar-link" href="index.html">
-	              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">实时监控</span>
-	            </a>
-			</li>
-
-			<li class="sidebar-item active">
-				<a class="sidebar-link" href="pages-data.html">
-		          <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">数据报表</span>
-		        </a>
-			</li>
-
-			<li class="sidebar-item">
-				<a class="sidebar-link" href="pages-settings.html">
-		          <i class="align-middle" data-feather="settings"></i> <span class="align-middle">综合设置</span>
-		        </a>
-			</li>
-		</ul>
+			<ul class="sidebar-nav">			
+				<li class="sidebar-item ">
+					<a class="sidebar-link" href="index.html">
+		              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">实时监控</span>
+		            </a>
+				</li>
+	
+				<li class="sidebar-item active">
+					<a class="sidebar-link" href="pages-data.html">
+			          <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">数据报表</span>
+			        </a>
+				</li>
+	
+				<li class="sidebar-item ">
+					<a class="sidebar-link" href="pages-setting.html">
+			          <i class="align-middle" data-feather="settings"></i> <span class="align-middle">综合设置</span>
+			        </a>
+				</li>
+			</ul>
 			</div>
 		</nav>
 
@@ -62,38 +62,36 @@
 
 
 			<main class="content">
-				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3">数据报表</h1>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="tab-content">
-								<div class="tab-pane fade show active" >
-									<div class="card">
-										<div class="card-body">
-											<form id = "form">
-												<div class="form-row">
-													<div class="form-group col-md-4">
-														<label for="inputLastName">线路名称</label>
-														<input type="text" class="form-control" id="addressName" >
-													</div>
-													<div class="form-group col-md-4">
-														<label for="inputFirstName">开始时间</label>
-														<input type="date" id="startDate" class="form-control" value="" />
-													</div>
-													<div class="form-group col-md-4">
-														<label for="inputLastName">结束时间</label>
-														<input type="date" id="endDate" class="form-control" value="" />
-													</div>
-												</div>
-												<button type="button" onclick="query()" class="btn btn-primary">查询</button>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="tableBody">
+			    <div class="panel panel-default">
+			        <div class="panel-heading">
+			            查询条件
+			        </div>
+			        <div class="panel-body " style="margin-bottom:0px;">
+			        	<div class="row">
+				            <label class="col-sm-1 control-label" style="text-align: right; margin-top:5px">线路名称：</label>
+				            <div class="col-sm-3">
+				                <select id="address" class="form-control">
+					                <option selected value= "1">测试线路1</option>
+					                <option value= "2">测试线路2</option>
+					              </select>
+				            </div>
+				            <label class="col-sm-1 control-label" style="text-align: right; margin-top:5px">开始时间：</label>
+				            <div class="col-sm-3">
+				                <input type="date" id="startDate" class="form-control" value="" />
+				            </div>
+				            <label class="col-sm-1 control-label" style="text-align: right; margin-top:5px">结束时间：</label>
+				            <div class="col-sm-3">
+				                <input type="date" id="endDate" class="form-control" value="" />
+				            </div>
+			            </div>
+			            <div class=" pull-right">
+			                <button class="btn btn-primary" onclick="query()" id="search_btn">查询</button>
+			            </div>
+			        </div>
+			    </div>
+			    <table id="mytab" class="table table-hover"></table>
+			    </div>
 			</main>
 
 			<footer class="footer">
@@ -109,41 +107,175 @@
 			</footer>
 		</div>
 	</div>
-
-	<script src="js/app.js"></script>
+</body>
 <script type="text/javascript">
 
-function trans( str){
-	var json = JSON.stringify(str);
-        var e = new RegExp("{", "g");
-        json = json.replace(e, "");
-        e = new RegExp("}", "g");
-        json = json.replace(e, "");
-        json = json.replace("[","{").replace("]","}");
-        return json;
-}
 
-function query(){
-	var addressName = $("#addressName").val();
-	var startDate= $("#startDate").val();
-	var endDate = $("#endDate").val();
-	var d1 = new Date(startDate.replace(/\-/g, "\/")); 
-	 var d2 = new Date(endDate.replace(/\-/g, "\/")); 
-	if(startDate!=""&&endDate!=""&&d1 >=d2) 
-	{
-	    alert("开始时间必须小于结束时间！");
-	    return false; 
+	$(function(){
+	    //根据窗口调整表格高度
+	    $(window).resize(function() {
+	        $('#mytab').bootstrapTable('resetView', {
+	            height: tableHeight()
+	        })
+	    })
+	    //生成用户数据
+	    $('#mytab').bootstrapTable({
+	        method: 'post',
+	        contentType: "application/json",
+	        dataType:"json",
+	        url:"/data/getRecord",
+	        striped : true, //是否显示行间隔色
+	        pageNumber : 1, //初始化加载第一页
+	        pagination : true,//是否分页
+	        sidePagination : 'server',//server:服务器端分页|client：前端分页
+	        pageSize : 5,//单页记录数
+	        pageList : [ 5, 10, 20],//可选择单页记录数
+	        showColumns:true,
+	        clickToSelect: true,//是否启用点击选中行
+	        showRefresh : true,//刷新按钮
+	        //toolbar:'#toolbar',//指定工作栏
+	        columns:[
+	            {
+	                title:'线路名称',
+	                field:'addressName',
+	                visible:true,
+	                sortable:false
+	            },
+	            {
+	                title:'线电压Uab',
+	                field:'uab',
+	                visible:true,
+	                sortable:false
+	            },
+	            {
+	                title:'线电压Ubc',
+	                field:'ubc',
+	                visible:false,
+	                sortable:false
+	            },
+	            {
+	                title:'线电压Uca',
+	                field:'uca',
+	                visible:false,
+	                sortable:false
+	            },
+	            {
+	                title:'a相电流Ia',
+	                field:'ia',
+	                visible:true,
+	                sortable:false
+	            },
+	            {
+	                title:'b相电流Ib',
+	                field:'ib',
+	                visible:false,
+	                sortable:false
+	            },
+	            {
+	                title:'c相电流Ic',
+	                field:'ic',
+	                visible:false,
+	                sortable:false
+	            },
+	            {
+	                title:'a相有功功率Pa',
+	                field:'pa',
+	                sortable:false
+	            },
+	            {
+	                title:'b相有功功率Pb',
+	                field:'pb',
+	                sortable:false
+	            },
+	            {
+	                title:'c相有功功率Pc',
+	                field:'pc',
+	                sortable:false
+	            },
+	            {
+	                title:'总有功功率P0',
+	                field:'p0',
+	                sortable:false
+	            },
+	            {
+	                title:'总无功功率Q0',
+	                field:'q0',
+	                sortable:false
+	            },
+	            {
+	                title:'总功率因数',
+	                field:'rate',
+	                sortable:false
+	            },
+	            {
+	                title:'正向有功W0',
+	                field:'w0',
+	                sortable:false
+	            }
+	            
+	        ],
+	        locale:'zh-CN',//中文支持,
+	        queryParams: queryParams,
+	    responseHandler:function(res){
+	        //在ajax获取到数据，渲染表格之前，修改数据源
+	        var nres = [];
+	        nres.push({total:res.data.total,rows:res.data.list});
+	        return nres[0];
+	    }
+	    })
+	
+	})
+	
+	function tableHeight() {
+	    return $(window).height() - 140;
 	}
-	var str = [];
-	str.push({"addressName":addressName,"startDate":startDate,"endDate":endDate})
-	var json = trans(str);
-	console.log(json);
+	
+	//请求服务数据时所传查询参数
+	function queryParams(params){
+		var address = $("#address").val();
+		var startDate= $("#startDate").val();
+		var endDate = $("#endDate").val();
+		var d1 = new Date(startDate.replace(/\-/g, "\/")); 
+		 var d2 = new Date(endDate.replace(/\-/g, "\/")); 
+		if(startDate!=""&&endDate!=""&&d1 >=d2) 
+		{
+		    alert("开始时间必须小于结束时间！");
+		    return false; 
+		}
+		
+	    return{
+	        pageSize: params.limit,
+	        pageNum:params.pageNumber,
+	        address:address,
+	        startDate:startDate,
+	        endDate:endDate
+	    }
+	}
+	
+	
+	
+	//查询按钮事件
+	function query() {
+	    $('#mytab').bootstrapTable('refresh', {url: '/data/getRecord'});//url为后台action
+	}
+	
+	
+	
+	function trans( str){
+		var json = JSON.stringify(str);
+	        var e = new RegExp("{", "g");
+	        json = json.replace(e, "");
+	        e = new RegExp("}", "g");
+	        json = json.replace(e, "");
+	        json = json.replace("[","{").replace("]","}");
+	        return json;
+	}
 
-}
+
 
 
 </script>
 
-</body>
+
 
 </html>

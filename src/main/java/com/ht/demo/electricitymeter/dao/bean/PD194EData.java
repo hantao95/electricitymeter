@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 public class PD194EData implements Instrument{
-    private Integer address ;//地址
+    private String address ;//地址
     private String addressName ;//地址
     private Integer sort;//排序
 
@@ -86,6 +86,7 @@ public class PD194EData implements Instrument{
             }
         }
     }
+    
 
 
 }

@@ -12,8 +12,8 @@
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
 	<title>demo</title>
-
 	<link href="css/app.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -24,25 +24,25 @@
 	          <span class="align-middle">电路监控</span>
 	        </a>
 
-		<ul class="sidebar-nav">			
-			<li class="sidebar-item active">
-				<a class="sidebar-link" href="index.html">
-	              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">实时监控</span>
-	            </a>
-			</li>
-
-			<li class="sidebar-item">
-				<a class="sidebar-link" href="pages-data.html">
-		          <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">数据报表</span>
-		        </a>
-			</li>
-
-			<li class="sidebar-item">
-				<a class="sidebar-link" href="pages-settings.html">
-		          <i class="align-middle" data-feather="settings"></i> <span class="align-middle">综合设置</span>
-		        </a>
-			</li>
-		</ul>
+			<ul class="sidebar-nav">			
+				<li class="sidebar-item active">
+					<a class="sidebar-link" href="index.html">
+		              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">实时监控</span>
+		            </a>
+				</li>
+	
+				<li class="sidebar-item">
+					<a class="sidebar-link" href="pages-data.html">
+			          <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">数据报表</span>
+			        </a>
+				</li>
+	
+				<li class="sidebar-item">
+					<a class="sidebar-link" href="pages-setting.html">
+			          <i class="align-middle" data-feather="settings"></i> <span class="align-middle">综合设置</span>
+			        </a>
+				</li>
+			</ul>
 			</div>
 		</nav>
 
@@ -145,7 +145,7 @@
 					</div>
 
 					<div class="row">
-						<div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-1">
+						<div class="col-12 col-md-6 col-xxl-4  order-1 order-xxl-1">
 							<div class="card">
 								<div class="card-header">
 									<h5 class="card-title mb-0">继电器</h5>
@@ -182,7 +182,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-12 col-md-6 col-xxl-4 d-flex order-2 order-xxl-2">
+						<div class="col-12 col-md-6 col-xxl-4  order-2 order-xxl-2">
 							<div class="card">
 								<div class="card-header">
 									<h5 class="card-title mb-0">开关量</h5>
@@ -275,18 +275,17 @@
 	
 	<script type="text/javascript">
 		$(function() {
-			test();
-			setInterval("test()",3000);
+			getInfo();
+			setInterval("getInfo()",3000);
 		});
-		function test(){
+		function getInfo(){
 			$.ajax({
-				url: '/comm/getMessage',
+				url: '/data/getInfo',
 				type: 'POST',
 				data: '',
 				contentType: 'application/json;charset=utf-8',
 				dataType: 'json',
 				success: function (o) {
-					console.log(new Date());
 					var tab = $("#Etable")[0];
 					var tableRelay = $("#table-relay")[0];
 					var tableSwitch = $("#table-switch")[0];

@@ -1,7 +1,5 @@
 package com.ht.demo.electricitymeter.service;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,7 @@ import com.ht.demo.electricitymeter.dao.bean.CommonResult;
 import com.ht.demo.electricitymeter.dao.bean.Instrument;
 import com.ht.demo.electricitymeter.dao.bean.PD194EData;
 import com.ht.demo.electricitymeter.dao.req.ReqOpenPort;
+import com.ht.demo.electricitymeter.dao.rsp.RspFindPort;
 import com.ht.demo.electricitymeter.util.ByteUtils;
 import com.ht.demo.electricitymeter.util.SerialPortManager;
 import com.ht.demo.electricitymeter.util.StringUtil;
@@ -36,8 +35,13 @@ public class CommService {
     /**
      * 查询有效的com口
      */
-    public List<String> findPorts(){
-        return SerialPortManager.findPorts();
+    public RspFindPort findPorts(){
+    	RspFindPort result= new RspFindPort();
+    	result.setPorts(SerialPortManager.findPorts());
+    	if(port!=null) {
+    		result.setPort(port.getName());
+    	}
+        return result;
     }
 
     /**
@@ -91,6 +95,7 @@ public class CommService {
      */
     public void closePort(){
         SerialPortManager.closePort(port);
+        port=null;//关闭后情况记录
     }
 
     /**

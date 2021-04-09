@@ -53,6 +53,9 @@ public class TaskService {
      */
     public void sendMessage() {
     	SerialPort port = commService.getPort();//获取端口
+    	if(port==null) {
+    		return;
+    	}
     	//遍历地址
     	Map<String, String> instrumentAddresses=instrumentAddressesService.getAddressTypeMap();
     	for(Entry<String, String> entry:instrumentAddresses.entrySet()) {

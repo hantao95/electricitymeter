@@ -33,27 +33,27 @@ public class InstrumentAddressesService {
 	@Autowired
 	private InstrumentTypeMapper instrumentTypeMapper;
 	
-	public Map<Integer, String> getTypeMap() {
+	public  Map<Integer, String> getTypeMap() {
 		if(typeMap.isEmpty()) {
 			reflush();
 		}
 		return typeMap;
 	}
-	public Map<String, String> getAddressTypeMap() {
+	public  Map<String, String> getAddressTypeMap() {
 		if(addressTypeMap.isEmpty()) {
 			reflush();
 		}
 		return addressTypeMap;
 	}
 	
-	public Map<String, InstrumentAddress> getAddressMap() {
+	public  Map<String, InstrumentAddress> getAddressMap() {
 		if(addressMap.isEmpty()) {
 			reflush();
 		}
 		return addressMap;
 	}
 	//刷新缓存
-	public void reflush() {
+	public  void reflush() {
 		List<InstrumentType> instrumentTypeList=instrumentTypeMapper.selectAll();
 		for(InstrumentType type:instrumentTypeList) {
 			typeMap.put(type.getId(), type.getName());

@@ -3,11 +3,16 @@ package com.ht.demo.electricitymeter.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.pagehelper.PageInfo;
 import com.ht.demo.electricitymeter.dao.bean.Instrument;
+import com.ht.demo.electricitymeter.dao.bean.InstrumentDataRecord;
+import com.ht.demo.electricitymeter.dao.req.ReqQueryRecord;
 import com.ht.demo.electricitymeter.service.InstrumentAddressesService;
+import com.ht.demo.electricitymeter.service.InstrumentDataRecordService;
 import com.ht.demo.electricitymeter.service.TaskService;
 
 
@@ -24,6 +29,8 @@ public class DataController {
 	private TaskService TaskService;
 	@Autowired
 	private InstrumentAddressesService  instrumentAddressesService;
+	@Autowired
+	private InstrumentDataRecordService instrumentDataRecordService;
 	
 	/**
 	 * 
@@ -46,4 +53,8 @@ public class DataController {
 	 //新增线路信息 不做
 	 
 	 //获取记录的信息
+	 @RequestMapping("getRecord")
+	 public PageInfo<InstrumentDataRecord> getRecord(@RequestBody ReqQueryRecord reqInfo){
+		 return instrumentDataRecordService.queryDataRecord(reqInfo);
+	 }
 }

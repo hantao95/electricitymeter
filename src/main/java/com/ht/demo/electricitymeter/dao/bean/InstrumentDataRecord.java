@@ -2,9 +2,18 @@ package com.ht.demo.electricitymeter.dao.bean;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import lombok.Data;
 
 @Table(name = "instrument_data_record")
+@Data
 public class InstrumentDataRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +23,12 @@ public class InstrumentDataRecord {
      * 地址
      */
     private String address;
+    
+    @Transient
+    /**
+      * 地址名称
+     */
+    private String addressName;
 
     /**
      * 继电器1
